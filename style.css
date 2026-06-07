@@ -1154,4 +1154,284 @@ button:disabled {
   .split-action {
     font-size: 20px;
   }
+  /* TELEFON FEKTETETT NÉZET JAVÍTÁS */
+@media (orientation: landscape) and (max-width: 950px) and (max-height: 500px) {
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .game-screen {
+    height: 100dvh;
+    min-height: 100dvh;
+    padding: 3px;
+    gap: 3px;
+    display: grid;
+    grid-template-rows: 28px 1fr 68px;
+    overflow: hidden;
+  }
+
+  .top-bar {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 3px;
+    height: 28px;
+  }
+
+  .top-bar div {
+    height: 28px;
+    padding: 5px 3px;
+    border-radius: 7px;
+    font-size: 9px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .wide-info {
+    grid-column: span 1;
+  }
+
+  .table {
+    height: 100%;
+    min-height: 0;
+    border-radius: 16px;
+    border-width: 2px;
+    overflow: hidden;
+  }
+
+  .table-arc {
+    top: -76px;
+    width: 360px;
+    height: 116px;
+    padding-bottom: 13px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-width: 2px;
+  }
+
+  .dealer-area {
+    padding-top: 8px;
+  }
+
+  .dealer-area h2 {
+    margin: 0;
+    font-size: 13px;
+  }
+
+  .hand-value {
+    min-height: 12px;
+    margin-bottom: 1px;
+    font-size: 9px;
+  }
+
+  .cards {
+    min-height: 38px;
+    gap: 3px;
+    padding: 0 3px;
+  }
+
+  .card {
+    width: 30px;
+    height: 42px;
+    border-radius: 5px;
+    border-width: 1px;
+    font-size: 14px;
+  }
+
+  .card .corner {
+    top: 3px;
+    left: 4px;
+    font-size: 7px;
+    line-height: 7px;
+  }
+
+  .card .center-suit {
+    font-size: 15px;
+  }
+
+  .message-area {
+    margin-top: 1px;
+    padding: 0 104px;
+  }
+
+  .message-text {
+    min-height: 16px;
+    font-size: 13px;
+  }
+
+  .side-result-text {
+    display: none;
+  }
+
+  .payout-panel {
+    position: absolute;
+    top: 46px;
+    width: 92px;
+    padding: 5px;
+    border-radius: 10px;
+    border-width: 1px;
+  }
+
+  .payout-left {
+    left: 6px;
+  }
+
+  .payout-right {
+    right: 58px;
+  }
+
+  .payout-panel h3 {
+    margin: 0 0 3px;
+    font-size: 8px;
+  }
+
+  .payout-panel p {
+    margin: 2px 0;
+    gap: 3px;
+    font-size: 7px;
+    line-height: 1.1;
+  }
+
+  .hands-area {
+    width: calc(100% - 70px);
+    margin: 4px 64px 0 4px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .hand-seat {
+    height: 138px;
+    min-height: 0;
+    padding: 4px;
+    border-radius: 12px;
+  }
+
+  .hand-title {
+    margin: 0;
+    font-size: 11px;
+  }
+
+  .hand-result {
+    min-height: 9px;
+    margin-bottom: 0;
+    font-size: 8px;
+  }
+
+  .player-value {
+    margin-bottom: 1px;
+    font-size: 8px;
+  }
+
+  .hand-seat .cards {
+    min-height: 36px;
+  }
+
+  .betting-area {
+    margin-top: 2px;
+    grid-template-columns: 1fr 1.08fr 1fr;
+    gap: 3px;
+  }
+
+  .bet-circle {
+    min-height: 34px;
+    border-width: 2px;
+    gap: 1px;
+  }
+
+  .main-bet {
+    min-height: 42px;
+  }
+
+  .bet-circle span {
+    font-size: 6px;
+    line-height: 1;
+  }
+
+  .bet-circle strong {
+    font-size: 12px;
+  }
+
+  .round-win-box {
+    left: 6px;
+    bottom: 6px;
+    min-width: 78px;
+    padding: 5px 7px;
+    border-radius: 10px;
+    border-width: 1px;
+  }
+
+  .round-win-box span {
+    font-size: 7px;
+  }
+
+  .round-win-box strong {
+    margin-top: 1px;
+    font-size: 16px;
+  }
+
+  .controls-panel {
+    height: 68px;
+    min-height: 68px;
+    padding: 4px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .chip-row,
+  .action-row,
+  .bottom-row {
+    gap: 4px;
+  }
+
+  .action-row,
+  .bottom-row {
+    margin-top: 3px;
+  }
+
+  .chip {
+    width: 30px;
+    height: 30px;
+    border-width: 3px;
+    font-size: 7px;
+  }
+
+  .chip.selected {
+    outline-width: 2px;
+    transform: none;
+  }
+
+  .action-row button,
+  .bottom-row button,
+  .primary-btn {
+    min-height: 20px;
+    padding: 0 7px;
+    border-radius: 7px;
+    font-size: 9px;
+  }
+
+  .floating-actions {
+    right: 5px;
+    top: 60%;
+    gap: 4px;
+  }
+
+  .round-action {
+    width: 34px;
+    height: 34px;
+    border-width: 2px;
+    font-size: 18px;
+  }
+
+  .double-action {
+    font-size: 13px;
+  }
+
+  .split-action {
+    font-size: 18px;
+  }
+}
 }
