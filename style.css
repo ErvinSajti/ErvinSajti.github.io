@@ -678,60 +678,6 @@ button:disabled {
     font-size: 22px;
   }
 }
-
-@media (max-width: 520px) and (orientation: portrait) {
-  .game-screen {
-    padding: 8px;
-  }
-
-  .top-bar {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-
-  .wide-info {
-    grid-column: span 1;
-  }
-
-  .top-bar div {
-    padding: 9px;
-  }
-
-  .hands-area {
-    width: 98%;
-  }
-
-  .betting-area {
-    grid-template-columns: 1fr;
-  }
-
-  .main-bet {
-    min-height: 90px;
-  }
-
-  .chip {
-    width: 64px;
-    height: 64px;
-    border-width: 5px;
-  }
-
-  .action-row button,
-  .bottom-row button,
-  .primary-btn {
-    width: 100%;
-  }
-
-  .round-win-box {
-    left: 10px;
-    bottom: 10px;
-    min-width: 140px;
-  }
-
-  .round-win-box strong {
-    font-size: 26px;
-  }
-}
-
 @media (orientation: landscape) and (max-height: 620px) {
   html,
   body {
