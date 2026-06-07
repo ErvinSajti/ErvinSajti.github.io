@@ -1155,37 +1155,51 @@ button:disabled {
     font-size: 20px;
   }
 }
-/* TELEFON FEKTETETT NÉZET JAVÍTÁS */
-@media (orientation: landscape) and (max-width: 950px) and (max-height: 500px) {
+/* TELEFON FEKTETETT NÉZET VÉGLEGES JAVÍTÁS */
+@media screen and (orientation: landscape) and (max-width: 1000px) {
   html,
   body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100dvh;
+    max-width: 100vw;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
+    overscroll-behavior: none;
+    touch-action: manipulation;
+  }
+
+  body {
+    position: fixed;
+    inset: 0;
   }
 
   .game-screen {
+    width: 100vw;
     height: 100dvh;
-    min-height: 100dvh;
+    min-height: 0;
+    max-height: 100dvh;
     padding: 3px;
     gap: 3px;
     display: grid;
-    grid-template-rows: 28px 1fr 68px;
+    grid-template-rows: 24px 1fr 78px;
     overflow: hidden;
   }
 
   .top-bar {
+    height: 24px;
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 3px;
-    height: 28px;
   }
 
   .top-bar div {
-    height: 28px;
+    height: 24px;
+    min-height: 0;
     padding: 5px 3px;
     border-radius: 7px;
-    font-size: 9px;
+    font-size: 8px;
     line-height: 1;
     white-space: nowrap;
     overflow: hidden;
@@ -1197,71 +1211,70 @@ button:disabled {
   }
 
   .table {
+    width: 100%;
     height: 100%;
     min-height: 0;
-    border-radius: 16px;
+    max-height: none;
+    border-radius: 14px;
     border-width: 2px;
     overflow: hidden;
   }
 
   .table-arc {
-    top: -76px;
-    width: 360px;
-    height: 116px;
-    padding-bottom: 13px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    border-width: 2px;
+    display: none;
   }
 
   .dealer-area {
-    padding-top: 8px;
+    padding-top: 5px;
   }
 
   .dealer-area h2 {
     margin: 0;
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 1;
   }
 
   .hand-value {
-    min-height: 12px;
-    margin-bottom: 1px;
-    font-size: 9px;
+    min-height: 10px;
+    margin: 1px 0;
+    font-size: 8px;
+    line-height: 1;
   }
 
   .cards {
-    min-height: 38px;
-    gap: 3px;
-    padding: 0 3px;
+    min-height: 30px;
+    gap: 2px;
+    padding: 0 2px;
   }
 
   .card {
-    width: 30px;
-    height: 42px;
+    width: 27px;
+    height: 38px;
     border-radius: 5px;
     border-width: 1px;
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .card .corner {
     top: 3px;
     left: 4px;
-    font-size: 7px;
-    line-height: 7px;
+    font-size: 6px;
+    line-height: 6px;
   }
 
   .card .center-suit {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .message-area {
     margin-top: 1px;
-    padding: 0 104px;
+    padding: 0 100px;
   }
 
   .message-text {
-    min-height: 16px;
-    font-size: 13px;
+    min-height: 14px;
+    font-size: 12px;
+    line-height: 1.1;
   }
 
   .side-result-text {
@@ -1269,135 +1282,173 @@ button:disabled {
   }
 
   .payout-panel {
-    position: absolute;
-    top: 46px;
-    width: 92px;
-    padding: 5px;
-    border-radius: 10px;
+    top: 34px;
+    width: 84px;
+    padding: 4px;
+    border-radius: 9px;
     border-width: 1px;
   }
 
   .payout-left {
-    left: 6px;
+    left: 5px;
   }
 
   .payout-right {
-    right: 58px;
+    right: 52px;
   }
 
   .payout-panel h3 {
-    margin: 0 0 3px;
-    font-size: 8px;
-  }
-
-  .payout-panel p {
-    margin: 2px 0;
-    gap: 3px;
+    margin: 0 0 2px;
     font-size: 7px;
     line-height: 1.1;
   }
 
+  .payout-panel p {
+    margin: 1px 0;
+    gap: 2px;
+    font-size: 6px;
+    line-height: 1.1;
+  }
+
   .hands-area {
-    width: calc(100% - 70px);
-    margin: 4px 64px 0 4px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: calc(100% - 58px);
+    height: calc(100% - 120px);
+    max-height: 155px;
+    margin: 3px 54px 0 auto;
+    padding: 0 4px 4px 4px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
     gap: 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+  }
+
+  .hands-area::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .hands-area::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+  }
+
+  .hands-area::-webkit-scrollbar-thumb {
+    background: rgba(245, 197, 66, 0.8);
+    border-radius: 999px;
   }
 
   .hand-seat {
-    height: 138px;
+    flex: 0 0 30.5%;
+    min-width: 176px;
+    height: 150px;
     min-height: 0;
-    padding: 4px;
-    border-radius: 12px;
+    padding: 3px;
+    border-radius: 10px;
+    overflow: hidden;
   }
 
   .hand-title {
     margin: 0;
-    font-size: 11px;
+    font-size: 10px;
+    line-height: 1;
   }
 
   .hand-result {
-    min-height: 9px;
-    margin-bottom: 0;
-    font-size: 8px;
+    min-height: 8px;
+    margin: 0;
+    font-size: 7px;
+    line-height: 1;
   }
 
   .player-value {
-    margin-bottom: 1px;
-    font-size: 8px;
+    margin: 1px 0;
+    font-size: 7px;
+    line-height: 1;
   }
 
   .hand-seat .cards {
-    min-height: 36px;
+    min-height: 30px;
   }
 
   .betting-area {
     margin-top: 2px;
-    grid-template-columns: 1fr 1.08fr 1fr;
-    gap: 3px;
+    grid-template-columns: 1fr 1.05fr 1fr;
+    gap: 2px;
   }
 
   .bet-circle {
-    min-height: 34px;
+    min-height: 31px;
     border-width: 2px;
     gap: 1px;
   }
 
   .main-bet {
-    min-height: 42px;
+    min-height: 39px;
   }
 
   .bet-circle span {
-    font-size: 6px;
+    font-size: 5.5px;
     line-height: 1;
   }
 
   .bet-circle strong {
-    font-size: 12px;
+    font-size: 11px;
+    line-height: 1;
   }
 
   .round-win-box {
-    left: 6px;
-    bottom: 6px;
-    min-width: 78px;
-    padding: 5px 7px;
-    border-radius: 10px;
+    left: 5px;
+    bottom: 5px;
+    min-width: 70px;
+    padding: 4px 6px;
+    border-radius: 9px;
     border-width: 1px;
   }
 
   .round-win-box span {
     font-size: 7px;
+    line-height: 1;
   }
 
   .round-win-box strong {
-    margin-top: 1px;
-    font-size: 16px;
+    margin-top: 2px;
+    font-size: 15px;
+    line-height: 1;
   }
 
   .controls-panel {
-    height: 68px;
-    min-height: 68px;
+    height: 78px;
+    min-height: 0;
+    max-height: 78px;
     padding: 4px;
-    border-radius: 10px;
+    border-radius: 9px;
     overflow: hidden;
   }
 
-  .chip-row,
-  .action-row,
-  .bottom-row {
+  .chip-row {
+    height: 31px;
     gap: 4px;
-  }
-
-  .action-row,
-  .bottom-row {
-    margin-top: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .chip {
-    width: 30px;
-    height: 30px;
+    width: 31px;
+    height: 31px;
+    min-width: 31px;
+    min-height: 31px;
+    padding: 0;
     border-width: 3px;
-    font-size: 7px;
+    font-size: 6px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: none;
   }
 
   .chip.selected {
@@ -1405,33 +1456,73 @@ button:disabled {
     transform: none;
   }
 
+  .action-row {
+    margin-top: 3px;
+    gap: 4px;
+    height: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bottom-row {
+    margin-top: 3px;
+    gap: 4px;
+    height: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .action-row button,
   .bottom-row button,
   .primary-btn {
-    min-height: 20px;
+    min-height: 18px;
+    height: 18px;
     padding: 0 7px;
-    border-radius: 7px;
-    font-size: 9px;
+    border-radius: 6px;
+    font-size: 8px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .floating-actions {
+    position: absolute;
     right: 5px;
-    top: 60%;
+    top: 57%;
+    transform: translateY(-50%);
     gap: 4px;
+    z-index: 25;
   }
 
   .round-action {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     border-width: 2px;
-    font-size: 18px;
+    font-size: 17px;
+    box-shadow: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .double-action {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .split-action {
-    font-size: 18px;
+    font-size: 17px;
+  }
+
+  .modal {
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .modal-card {
+    max-height: 92dvh;
+    padding: 16px;
   }
 }
