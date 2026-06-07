@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blackjack Side Bets</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="buyInScreen" class="buy-in-screen">
+    <div class="buy-in-card">
+      <h1>Blackjack</h1>
+      <p>Játékpénzes blackjack side betekkel.</p>
+
+      <label for="buyInInput">Buy-in amount</label>
+      <input id="buyInInput" type="number" min="1000" step="100" value="10000" />
+
+      <button id="startGameBtn" class="primary-btn">Start game</button>
+
+      <p id="buyInError" class="error-text"></p>
+    </div>
+  </div>
+
+  <main id="gameScreen" class="game-screen hidden">
+    <header class="top-bar">
+      <div>Total buy in: <span id="totalBuyInText">0</span></div>
+      <div>Balance: <span id="balanceText">0</span></div>
+      <div>Profit/Loss: <span id="profitText">0</span></div>
+      <div>Current bet: <span id="currentBetText">0</span></div>
+      <div class="wide-info">Last round: <span id="lastWinText">0</span></div>
+    </header>
+
+    <section class="table">
+      <div class="table-arc">
+        <span>BLACKJACK PAYS 3 TO 2</span>
+      </div>
+
+      <aside class="payout-panel payout-left">
+        <h3>Perfect Pairs</h3>
+        <p>Mixed Pair <strong>5:1</strong></p>
+        <p>Colored Pair <strong>10:1</strong></p>
+        <p>Perfect Pair <strong>25:1</strong></p>
+      </aside>
+
+      <aside class="payout-panel payout-right">
+        <h3>21 + 3</h3>
+        <p>Flush <strong>5:1</strong></p>
+        <p>Straight <strong>10:1</strong></p>
+        <p>Three of a Kind <strong>30:1</strong></p>
+        <p>Straight Flush <strong>40:1</strong></p>
+        <p>Suited Trips <strong>100:1</strong></p>
+      </aside>
+
+      <section class="dealer-area">
+        <h2>Dealer</h2>
+        <div id="dealerValue" class="hand-value">Value: 0</div>
+        <div id="dealerCards" class="cards"></div>
+      </section>
+
+      <section class="message-area">
+        <div id="messageText" class="message-text">Place your bets.</div>
+        <div id="sideBetResultText" class="side-result-text"></div>
+      </section>
+
+      <section id="handsArea" class="hands-area"></section>
+
+      <div class="round-win-box">
+        <span>You won</span>
+        <strong id="roundWinText">0</strong>
+      </div>
+    </section>
+
+    <section class="controls-panel">
+      <div class="chip-row">
+        <button class="chip selected" data-chip="100">100</button>
+        <button class="chip" data-chip="500">500</button>
+        <button class="chip" data-chip="1000">1000</button>
+        <button class="chip" data-chip="5000">5000</button>
+        <button class="chip" data-chip="10000">10000</button>
+        <button class="chip" data-chip="25000">25000</button>
+        <button class="chip" data-chip="50000">50000</button>
+      </div>
+
+      <div class="action-row">
+        <button id="clearBetsBtn">Clear bets</button>
+        <button id="rebetBtn">Rebet</button>
+        <button id="dealBtn" class="primary-btn">Deal</button>
+      </div>
+
+      <div class="bottom-row">
+        <button id="newBuyInBtn">New buy-in</button>
+        <button id="rulesBtn">Rules</button>
+      </div>
+    </section>
+
+    <div class="floating-actions">
+      <button id="hitBtn" class="round-action hit-action" disabled>+</button>
+      <button id="standBtn" class="round-action stand-action" disabled>×</button>
+      <button id="doubleBtn" class="round-action double-action" disabled>2x</button>
+      <button id="splitBtn" class="round-action split-action" disabled>↔</button>
+    </div>
+  </main>
+
+  <div id="rulesModal" class="modal hidden">
+    <div class="modal-card">
+      <button id="closeRulesBtn" class="close-btn">×</button>
+
+      <h2>Rules</h2>
+
+      <p>A cél, hogy közelebb kerülj 21-hez, mint az osztó.</p>
+      <p>Ha 21 fölé mész, veszítesz.</p>
+      <p>Az ász értéke 1 vagy 11. A képes lapok értéke 10.</p>
+      <p>Az osztó 17-nél megáll.</p>
+      <p>A blackjack 3:2 arányban fizet.</p>
+      <p>A normál nyerés 1:1 arányban fizet.</p>
+
+      <h3>Perfect Pairs</h3>
+      <p>Csak az adott hand első két lapja számít.</p>
+      <p>Mixed Pair: 5:1</p>
+      <p>Colored Pair: 10:1</p>
+      <p>Perfect Pair: 25:1</p>
+
+      <h3>21 + 3</h3>
+      <p>Az adott hand első két lapja és az osztó nyitott lapja számít.</p>
+      <p>Flush: 5:1</p>
+      <p>Straight: 10:1</p>
+      <p>Three of a Kind: 30:1</p>
+      <p>Straight Flush: 40:1</p>
+      <p>Suited Trips: 100:1</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

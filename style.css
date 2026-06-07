@@ -1,0 +1,955 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #07140a;
+  color: #ffffff;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.buy-in-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at center, rgba(40, 130, 55, 0.35), transparent 45%),
+    #07140a;
+}
+
+.buy-in-card {
+  width: 100%;
+  max-width: 420px;
+  background: #102917;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.4);
+}
+
+.buy-in-card h1 {
+  margin: 0 0 8px;
+  font-size: 42px;
+  letter-spacing: 1px;
+}
+
+.buy-in-card p {
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.buy-in-card label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.buy-in-card input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  margin-bottom: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: #07140a;
+  color: #ffffff;
+  outline: none;
+}
+
+.buy-in-card input:focus {
+  border-color: #f5c542;
+}
+
+.error-text {
+  min-height: 22px;
+  color: #ff7878 !important;
+  margin-top: 12px !important;
+}
+
+.game-screen {
+  min-height: 100vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.top-bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.top-bar div {
+  background: #102917;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.wide-info span,
+#lastWinText {
+  color: #f5c542;
+}
+
+.table {
+  position: relative;
+  flex: 1;
+  min-height: 650px;
+  overflow: hidden;
+  border-radius: 34px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 18%),
+    linear-gradient(180deg, #1e7a35, #12652b);
+  box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.35);
+}
+
+.table-arc {
+  position: absolute;
+  left: 50%;
+  top: -95px;
+  width: 620px;
+  height: 190px;
+  transform: translateX(-50%);
+  border: 3px solid rgba(0, 0, 0, 0.28);
+  border-radius: 0 0 620px 620px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 28px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.payout-panel {
+  position: absolute;
+  top: 120px;
+  z-index: 3;
+  width: 178px;
+  padding: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.14);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.payout-left {
+  left: 14px;
+}
+
+.payout-right {
+  right: 14px;
+}
+
+.payout-panel h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: #f5c542;
+  text-transform: uppercase;
+}
+
+.payout-panel p {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.payout-panel strong {
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.dealer-area,
+.message-area {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.dealer-area {
+  padding-top: 48px;
+}
+
+.dealer-area h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+
+.hand-value {
+  min-height: 22px;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 700;
+}
+
+.cards {
+  min-height: 102px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  padding: 0 8px;
+}
+
+.card {
+  width: 66px;
+  height: 94px;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #101010;
+  border: 2px solid #e5e5e5;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.card.red {
+  color: #c01628;
+}
+
+.card.back {
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #173c8a,
+      #173c8a 8px,
+      #102d66 8px,
+      #102d66 16px
+    );
+  border-color: #ffffff;
+}
+
+.card .corner {
+  position: absolute;
+  top: 7px;
+  left: 8px;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.card .center-suit {
+  font-size: 34px;
+}
+
+.message-area {
+  margin: 14px auto 0;
+  max-width: 850px;
+  padding: 0 190px;
+}
+
+.message-text {
+  min-height: 30px;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.side-result-text {
+  display: none;
+}
+
+.hands-area {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, 96%);
+  margin: 18px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.hand-seat {
+  min-height: 332px;
+  border-radius: 26px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+.hand-seat.active-hand {
+  border-color: #f5c542;
+  box-shadow: 0 0 0 3px rgba(245, 197, 66, 0.16);
+}
+
+.hand-title {
+  text-align: center;
+  margin: 0 0 5px;
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.hand-result {
+  min-height: 22px;
+  text-align: center;
+  color: #ffe083;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.player-value {
+  text-align: center;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 700;
+}
+
+.betting-area {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.bet-circle {
+  min-height: 82px;
+  border-radius: 999px;
+  border: 3px solid rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-transform: uppercase;
+  font-weight: 900;
+  transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.bet-circle:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.bet-circle span {
+  font-size: 12px;
+}
+
+.bet-circle strong {
+  font-size: 23px;
+  color: #f5c542;
+}
+
+.main-bet {
+  border-color: #f5c542;
+  min-height: 102px;
+}
+
+.side-bet.side-win {
+  border-color: #18d85d;
+  box-shadow: 0 0 0 4px rgba(24, 216, 93, 0.22), 0 0 22px rgba(24, 216, 93, 0.45);
+}
+
+.side-bet.side-win strong {
+  color: #18d85d;
+}
+
+.side-bet.side-lose {
+  border-color: #e13138;
+  box-shadow: 0 0 0 4px rgba(225, 49, 56, 0.2), 0 0 22px rgba(225, 49, 56, 0.35);
+}
+
+.side-bet.side-lose strong {
+  color: #ff5b62;
+}
+
+.round-win-box {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 4;
+  min-width: 180px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 2px solid rgba(245, 197, 66, 0.9);
+}
+
+.round-win-box span {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.round-win-box strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 34px;
+  color: #f5c542;
+}
+
+.controls-panel {
+  background: #102917;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 12px;
+}
+
+.chip-row,
+.action-row,
+.bottom-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.action-row,
+.bottom-row {
+  margin-top: 10px;
+}
+
+.chip {
+  width: 70px;
+  height: 70px;
+  border-radius: 999px;
+  background: #b91424;
+  color: #ffffff;
+  border: 6px dashed rgba(255, 255, 255, 0.82);
+  font-weight: 900;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+}
+
+.chip.selected {
+  outline: 4px solid #f5c542;
+  transform: translateY(-3px);
+}
+
+.action-row button,
+.bottom-row button,
+.primary-btn {
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 12px;
+  background: #26352b;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-weight: 800;
+}
+
+.primary-btn {
+  background: #f5c542;
+  color: #111111;
+}
+
+.action-row button:hover:not(:disabled),
+.bottom-row button:hover:not(:disabled),
+.primary-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.floating-actions {
+  position: fixed;
+  right: 18px;
+  top: 62%;
+  z-index: 20;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.round-action {
+  width: 74px;
+  height: 74px;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 34px;
+  font-weight: 900;
+  border: 4px solid rgba(255, 255, 255, 0.78);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.34);
+}
+
+.hit-action {
+  background: #168e38;
+}
+
+.stand-action {
+  background: #c52028;
+}
+
+.double-action {
+  background: #f5c542;
+  color: #111111;
+  font-size: 28px;
+}
+
+.split-action {
+  background: #1f69d8;
+  font-size: 36px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 22px;
+}
+
+.modal-card {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: 86vh;
+  overflow: auto;
+  background: #102917;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 26px;
+}
+
+.modal-card h2 {
+  margin-top: 0;
+}
+
+.modal-card h3 {
+  margin-bottom: 6px;
+  color: #f5c542;
+}
+
+.modal-card p {
+  margin: 6px 0;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 24px;
+}
+
+@media (max-width: 1180px) {
+  .message-area {
+    padding: 0 150px;
+  }
+
+  .payout-panel {
+    width: 145px;
+  }
+
+  .payout-panel p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .hands-area {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+
+  .table {
+    min-height: 1160px;
+  }
+
+  .message-area {
+    padding: 0 160px;
+  }
+}
+
+@media (max-width: 820px) {
+  .top-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wide-info {
+    grid-column: span 2;
+  }
+
+  .table {
+    border-radius: 24px;
+  }
+
+  .table-arc {
+    width: 500px;
+    font-size: 20px;
+  }
+
+  .payout-panel {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: min(94%, 520px);
+    margin: 10px auto;
+  }
+
+  .dealer-area {
+    padding-top: 36px;
+  }
+
+  .message-area {
+    padding: 0 12px;
+  }
+
+  .card {
+    width: 60px;
+    height: 86px;
+    font-size: 27px;
+  }
+
+  .card .corner {
+    font-size: 15px;
+    line-height: 15px;
+  }
+
+  .card .center-suit {
+    font-size: 30px;
+  }
+
+  .message-text {
+    font-size: 22px;
+  }
+
+  .floating-actions {
+    right: 10px;
+  }
+
+  .round-action {
+    width: 58px;
+    height: 58px;
+    font-size: 28px;
+    border-width: 3px;
+  }
+
+  .double-action {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 520px) {
+  .game-screen {
+    padding: 8px;
+  }
+
+  .top-bar {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .wide-info {
+    grid-column: span 1;
+  }
+
+  .top-bar div {
+    padding: 9px;
+  }
+
+  .hands-area {
+    width: 98%;
+  }
+
+  .betting-area {
+    grid-template-columns: 1fr;
+  }
+
+  .main-bet {
+    min-height: 90px;
+  }
+
+  .chip {
+    width: 64px;
+    height: 64px;
+    border-width: 5px;
+  }
+
+  .action-row button,
+  .bottom-row button,
+  .primary-btn {
+    width: 100%;
+  }
+
+  .round-win-box {
+    left: 10px;
+    bottom: 10px;
+    min-width: 140px;
+  }
+
+  .round-win-box strong {
+    font-size: 26px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 620px) {
+  .game-screen {
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .top-bar {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .top-bar div {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .wide-info {
+    grid-column: span 1;
+  }
+
+  .table {
+    min-height: 430px;
+    border-radius: 22px;
+  }
+
+  .table-arc {
+    top: -105px;
+    width: 520px;
+    height: 170px;
+    font-size: 20px;
+    padding-bottom: 22px;
+  }
+
+  .dealer-area {
+    padding-top: 28px;
+  }
+
+  .dealer-area h2 {
+    font-size: 18px;
+  }
+
+  .hand-value {
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+
+  .cards {
+    min-height: 70px;
+    gap: 5px;
+  }
+
+  .card {
+    width: 44px;
+    height: 62px;
+    border-radius: 7px;
+    font-size: 21px;
+  }
+
+  .card .corner {
+    top: 4px;
+    left: 5px;
+    font-size: 11px;
+    line-height: 11px;
+  }
+
+  .card .center-suit {
+    font-size: 23px;
+  }
+
+  .message-area {
+    margin-top: 4px;
+    padding: 0 120px;
+  }
+
+  .message-text {
+    min-height: 22px;
+    font-size: 18px;
+  }
+
+  .side-result-text {
+    display: none;
+  }
+
+  .payout-panel {
+    position: absolute;
+    top: 86px;
+    width: 112px;
+    padding: 7px;
+    border-radius: 12px;
+  }
+
+  .payout-left {
+    left: 7px;
+  }
+
+  .payout-right {
+    right: 7px;
+  }
+
+  .payout-panel h3 {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .payout-panel p {
+    font-size: 9px;
+    margin: 3px 0;
+  }
+
+  .hands-area {
+    width: calc(100% - 92px);
+    margin: 8px 86px 0 8px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .hand-seat {
+    min-height: 190px;
+    padding: 7px;
+    border-radius: 16px;
+  }
+
+  .hand-title {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .hand-result {
+    min-height: 16px;
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+
+  .player-value {
+    margin-bottom: 2px;
+    font-size: 11px;
+  }
+
+  .betting-area {
+    margin-top: 5px;
+    grid-template-columns: 1fr 1.1fr 1fr;
+    gap: 4px;
+  }
+
+  .bet-circle {
+    min-height: 46px;
+    border-width: 2px;
+    gap: 2px;
+  }
+
+  .main-bet {
+    min-height: 56px;
+  }
+
+  .bet-circle span {
+    font-size: 8px;
+  }
+
+  .bet-circle strong {
+    font-size: 15px;
+  }
+
+  .round-win-box {
+    left: 8px;
+    bottom: 8px;
+    min-width: 108px;
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+
+  .round-win-box span {
+    font-size: 10px;
+  }
+
+  .round-win-box strong {
+    font-size: 22px;
+  }
+
+  .controls-panel {
+    padding: 6px;
+    border-radius: 12px;
+  }
+
+  .chip-row,
+  .action-row,
+  .bottom-row {
+    gap: 5px;
+  }
+
+  .action-row,
+  .bottom-row {
+    margin-top: 5px;
+  }
+
+  .chip {
+    width: 44px;
+    height: 44px;
+    border-width: 4px;
+    font-size: 11px;
+  }
+
+  .chip.selected {
+    outline-width: 3px;
+    transform: translateY(-1px);
+  }
+
+  .action-row button,
+  .bottom-row button,
+  .primary-btn {
+    min-height: 30px;
+    padding: 0 10px;
+    border-radius: 8px;
+    font-size: 12px;
+  }
+
+  .floating-actions {
+    right: 8px;
+    top: 67%;
+    gap: 7px;
+  }
+
+  .round-action {
+    width: 48px;
+    height: 48px;
+    border-width: 3px;
+    font-size: 24px;
+  }
+
+  .double-action {
+    font-size: 18px;
+  }
+
+  .split-action {
+    font-size: 25px;
+  }
+}
