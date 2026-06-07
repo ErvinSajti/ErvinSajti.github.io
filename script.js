@@ -1,4 +1,4 @@
-//kukifej
+//kukifejasdasdasd
 const buyInScreen = document.getElementById("buyInScreen");
 const gameScreen = document.getElementById("gameScreen");
 const buyInInput = document.getElementById("buyInInput");
